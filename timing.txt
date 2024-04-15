@@ -1,0 +1,25 @@
+| Array Size       | Append Timing (μs) | Insert Timing (μs) |
+|------------------|---------------------|---------------------|
+| tinyArray        | 110                 | 48.8                |
+| smallArray       | 21.2                | 22.9                |
+| mediumArray      | 67.7                | 202.7               |
+| largeArray       | 1,576.2             | 12,036.7            |
+| extraLargeArray  | 2,810.1             | 1,222,112.2         |
+
+#4,
+
+Examining the provided timing results, a clear pattern emerges regarding how each function scales with increasing array size. Initially, for the tinyArray and smallArray, both doublerAppend and doublerInsert exhibit relatively low execution times, with doublerInsert showing slightly lower times for tinyArray. However, as the array size grows to mediumArray and largeArray, the execution times for both functions increase noticeably. Notably, doublerInsert consistently takes significantly more time than doublerAppend. This discrepancy becomes even more pronounced with the extraLargeArray, where the execution time for doublerInsert drastically increases to over a second, while doublerAppend remains significantly more efficient. This indicates that doublerAppend scales better than doublerInsert, as the former exhibits a more gradual increase in execution time with increasing array size compared to the latter. The reason for this difference lies in the nature of the operations performed by each function. While doublerAppend simply appends elements to the end of the array, which is generally an O(1) operation, doublerInsert inserts elements at the beginning of the array using unshift, resulting in an O(n) operation. Thus, doublerAppend scales more efficiently than doublerInsert, as evidenced by the timing results.
+
+#5,
+
+- The slower function is significantly slower due to the nature of the operation it performs when inserting elements at the beginning of the array. 
+
+- In JavaScript, when using the "unshift" method to add elements to the beginning of an array, it necessitates shifting all existing elements to make space for the new element.
+
+- As the array size grows larger, this operation becomes increasingly inefficient and time-consuming, resulting in poor performance. The reason behind this inefficiency lies in the underlying implementation of arrays in JavaScript.
+
+-  when adding elements at the beginning of the array, all existing elements need to be shifted, which involves iterating over each element and moving it one position to the right. This process has a time complexity of O(n), where n is the number of elements in the array. 
+
+- Consequently, as the array size increases, the time taken to insert elements at the beginning of the array grows proportionally, leading to significantly slower performance compared to appending elements to the end of the array, which has a constant time complexity of O(1).
+
+- Therefore, the inefficiency of the slower  function is primarily due to the O(n) time complexity of the unshift operation, making it increasingly slow as the array size grows larger.
